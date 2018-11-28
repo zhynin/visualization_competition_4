@@ -1,40 +1,152 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>ECharts</title>
-    <!-- 引入 echarts.js -->
-    <script src="echarts.min.js"></script>
-</head>
-<body>
-    
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+<html lang="zh-CN">
+    <head>
+        <title>第四届可视化大赛</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./index.css">
+    </head>
+    <body>
+        <div id="container">
+            <H1>2010年-2017年各地区的GDP</H1>
+            <div id="line"></div>
+                <br>
+                <H1>2013年-2017年三次产业增加贡献率</H1>
+                <br>
+            <div id="pie""></div>
+            <script type="text/javascript" src="echarts.js"></script>
+            <script type="text/javascript">
+                var dom = document.getElementById("line");
+                var myChart = echarts.init(dom);
+                var app = {};
+                option = null;  
+                option = {
 
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪地三","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data:['贵阳市','遵义市','黔南州','毕节市','黔西南州','安顺市','铜仁市','黔东南州','六盘水市']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['2010年','2011年','2012年','2013年','2014年','2015年','2016年','2017年']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            name:'贵阳市',
+                            type:'line',
+                            data:[1121.82, 1383.07, 1710.30, 2085.00, 2497.27, 2891.16, 3157.70, 3537.96 ]
+                        },
+                        {
+                            name:'遵义市',
+                            type:'line',
+                            data:[908.76 , 1121.46 , 1361.93 , 1584.70 , 1874.50 , 2168.34 , 2403.94 , 2748.59]
+                        },
+                        {
+                            name:'黔南州',
+                            type:'line',
+                            data:[356.68 , 443.59 , 550.34 , 642.61 , 795.50 , 902.91 , 1023.39 , 1160.59]
+                        },
+                        {
+                            name:'毕节市',
+                            type:'line',
+                            data:[600.85 , 737.88 , 884.96 , 1041.93 , 1265.20 , 1461.35 , 1625.79 , 1841.61]
+                        },
+                        {
+                            name:'黔西南州',
+                            type:'line',
+                            data:[307.13 , 375.48 , 477.43 , 558.91 , 667.86 , 801.65 , 929.14 , 1067.60]
+                        },
+                        {
+                            name:'安顺市',
+                            type:'line',
+                            data:[232.90 , 285.64 , 367.62 , 427.85 , 516.26 , 625.41 , 701.35 , 802.46]
+                        },
+                        {
+                            name:'铜仁市',
+                            type:'line',
+                            data:[293.62 , 357.96 , 457.91 , 534.10 , 647.70 , 770.89 , 856.97 , 969.86]
+                        },
+                        {
+                            name:'黔东南州',
+                            type:'line',
+                            data:[312.57 , 383.63 , 495.75 , 584.64 , 700.76 , 811.55 , 939.05 , 972.18]
+                        },
+                        {
+                            name:'六盘水市',
+                            type:'line',
+                            data:[500.63, 613.86, 753.65, 876.95, 1042.73, 1201.08, 1313.70, 1461.71]
+                        },
+                    ]
+                };
+                ;
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+                       </script>
 
-        
-        myChart.setOption(option);
-    </script>
-</body>
+                       <script type="text/javascript">
+                var dom = document.getElementById("pie");
+                var myChart = echarts.init(dom);
+                var app = {};
+                option = null;
+                app.title = '三次产业增加贡献率';
+
+                option = {
+                    angleAxis: {
+                    },
+                    radiusAxis: {
+                        type: 'category',
+                        data: ['2013年', '2014年', '2015年', '2016年', '2017年'],
+                        z: 10
+                    },
+                    polar: {
+                    },
+                    series: [{
+                        type: 'bar',
+                        data: [5.1, 6.4, 6.0, 9.0, 9.3],
+                        coordinateSystem: 'polar',
+                        name: '第一产业增加值',
+                        stack: 'a'
+                    }, {
+                        type: 'bar',
+                        data: [46.8, 47.7, 45.0, 42.1, 39.5],
+                        coordinateSystem: 'polar',
+                        name: '第二产业增加值',
+                        stack: 'a'
+                    }, {
+                        type: 'bar',
+                        data: [48.1, 45.9, 49.0, 48.9, 51.2],
+                        coordinateSystem: 'polar',
+                        name: '第三产业增加值',
+                        stack: 'a'
+                    }],
+                    legend: {
+                        show: true,
+                        data: ['第一产业增加值', '第二产业增加值', '第三产业增加值']
+                    }
+                };
+                ;
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            </script>
+
+        </div>
+    </body>
 </html>
