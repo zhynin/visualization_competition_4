@@ -9,11 +9,20 @@
         <div id="container">
             <H1>2010年-2017年各地区的GDP</H1>
             <div id="line"></div>
-                <br>
-                <H1>2013年-2017年三次产业增加贡献率</H1>
-                <br>
+            <p>数据来源：贵州省统计局、维基百科</p>
+            <br>
+            <H1>2013年-2017年三次产业增加贡献率</H1>
+             <br>
             <div id="pie""></div>
+            <p >数据来源：贵州省统计局</p>
+            <br>
+            <H1>2013年-2017年居民消费</H1>
+            <br>
+            <div id="consumption"></div>
+            <p>数据来源：贵州省统计局</p>
+
             <script type="text/javascript" src="echarts.js"></script>
+
             <script type="text/javascript">
                 var dom = document.getElementById("line");
                 var myChart = echarts.init(dom);
@@ -146,6 +155,68 @@
                     myChart.setOption(option, true);
                 }
             </script>
+            <!-- bar-y-category-stack -->
+            <script type="text/javascript">
+                var dom = document.getElementById("consumption");
+                var myChart = echarts.init(dom);
+                var app = {};
+                option = null;
+                app.title = '堆叠条形图';
+
+                option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: ['农村居民消费','城镇居民消费']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis:  {
+                        type: 'value'
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: ['2013','2014','2015','2016','2017']
+                    },
+                    series: [
+                        {
+                            name: '农村居民消费',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            data: [1182.14, 1472.23, 1632.70, 1791.70, 1935.23]
+                        },
+                        {
+                            name: '城镇居民消费',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            data: [2150.56, 2524.91, 2898.18, 3403.47, 3897.39]
+                        }
+                    ]
+                };;
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+       </script>
 
         </div>
     </body>

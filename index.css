@@ -15,11 +15,16 @@ h1{
     text-align: center;
 }
 
+p{
+    margin-left: 75%;
+}
+
 #container{
     position: relative;
     margin: 0 auto;
     margin-top: 100px;
     border-radius: 1px;
+    margin-bottom: 100px;
 }
 
 #line{
@@ -30,6 +35,13 @@ h1{
 }
 
 #pie{
+    margin-top: 50px;
+    height: 609px;
+    width: 92%;
+    margin-left: 4%;
+}
+
+#consumption{
     margin-top: 50px;
     height: 609px;
     width: 92%;
