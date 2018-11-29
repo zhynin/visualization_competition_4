@@ -9,16 +9,26 @@
         <div id="container">
             <H1>2010年-2017年各地区的GDP</H1>
             <div id="line"></div>
+            <p>单位：亿元人民币</p>
             <p>数据来源：贵州省统计局、维基百科</p>
             <br>
             <H1>2013年-2017年三次产业增加贡献率</H1>
              <br>
             <div id="pie""></div>
+            <p>百分比100%</p>
             <p >数据来源：贵州省统计局</p>
             <br>
             <H1>2013年-2017年居民消费</H1>
             <br>
             <div id="consumption"></div>
+            <p>单位：亿元人民币</p>
+            <p>数据来源：贵州省统计局</p>
+            <br>
+            <!-- bar -->
+            <H1>2013年-2017财政收入</H1>
+            <br>
+            <div id="bar"></div>
+            <p>单位：亿元人民币</p>
             <p>数据来源：贵州省统计局</p>
 
             <script type="text/javascript" src="echarts.js"></script>
@@ -216,7 +226,38 @@
                 if (option && typeof option === "object") {
                     myChart.setOption(option, true);
                 }
-       </script>
+        </script>
+
+        <!-- bar -->
+        <script type="text/javascript">
+            var dom = document.getElementById("bar");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2013年', '2014年', '2015年', '2016年', '2017年']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [1918.23, 2130.90, 2291.82, 2409.35, 2648.31],
+                    type: 'bar',
+                    label: {
+                            normal: {
+                                show: true,
+                                position: 'top'
+                            }
+                        },
+                }]
+            };
+            ;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        </script>
 
         </div>
     </body>
